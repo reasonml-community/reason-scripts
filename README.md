@@ -26,8 +26,8 @@ use JS code from Reason.
 To create a new app using Reason and React, run:
 
 ```
-$ npm install -g bs-platform
-$ yarn create react-app <app-name> --scripts-version reason-scripts
+$ yarn global add bs-platform
+$ yarn create-react-app <app-name> --scripts-version reason-scripts
 $ cd <app-name>
 $ yarn start
 ```

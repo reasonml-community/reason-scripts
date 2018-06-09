@@ -27,6 +27,8 @@ module.exports = (resolve, rootDir, isEjecting) => {
     testMatch: [
       '<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}',
       '<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}',
+      '<rootDir>/src/**/__tests__/**/*.{re,ml}',
+      '<rootDir>/src/**/*_test.{re,ml}',
     ],
     testEnvironment: 'node',
     testURL: 'http://localhost',
@@ -38,6 +40,9 @@ module.exports = (resolve, rootDir, isEjecting) => {
       '^(?!.*\\.(js|jsx|mjs|css|json)$)': resolve(
         'config/jest/fileTransform.js'
       ),
+      '^.+\\.(re|ml)$': isEjecting
+        ? '<rootDir>/node_modules/bs-loader'
+        : 'bs-loader',
     },
     transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$'],
     moduleNameMapper: {
@@ -51,6 +56,8 @@ module.exports = (resolve, rootDir, isEjecting) => {
       'jsx',
       'node',
       'mjs',
+      're',
+      'ml',
     ],
   };
   if (rootDir) {
